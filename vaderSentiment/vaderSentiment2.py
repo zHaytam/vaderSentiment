@@ -159,7 +159,9 @@ class SentiText(object):
     """
 
     def __init__(self, text):
-        if not isinstance(text, str):
+        if isinstance(text, unicode):
+            text = text.encode('utf-8')
+        elif not isinstance(text, str):
             text = str(text).encode('utf-8')
         self.text = text
         self.words_and_emoticons = self._words_and_emoticons()
